@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  overflow: auto;
+}
+body.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+#chatgpt-dialog {
+  bottom: calc(100% + 20px);
+}
+
+#chatgpt-dialog:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-width: 0 16px 16px 0;
+  border-style: solid;
+  border-radius: 0 0 0 0.5rem;
+  border-color: #dedede transparent;
+}
+
+@keyframes spinIn {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes spinBack {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+#chatgpt-open-trigger.loader svg {
+  animation: 1s spinIn ease-out;
+}
+
+#chatgpt-open-trigger.spin svg {
+  animation: 1.5s spinIn infinite linear;
+  transition: transform 10s linear;
+  -webkit-transition: transform 10s linear;
+}
+
+#chatgpt-open-trigger.spin.ending svg {
+  animation: 1s spinBack forwards !important;
+  transition: transform 1s linear !important;
+  -webkit-transition: transform 1s linear !important;
+}
+
+.white-80 {
+  color: white;
+  width: 80%;
+  height: 80%;
+}
+
+#pane-1 {
+  /* Minus Gutter and Right Panel */
+  max-width: calc(100vw - 12px - 700px);
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#save-spinner {
+  content: "";
+  box-sizing: border-box;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #000;
+  animation: spinner 0.6s linear infinite;
+}
+
+@tailwind utilities;
